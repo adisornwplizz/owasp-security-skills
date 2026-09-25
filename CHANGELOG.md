@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 — 2026-09-25
+
+- Corrected the Top 10:2025 release date. Per the OWASP/Top10 repository history, the release-candidate label was removed on 2025-12-24, not in January 2026.
+- Pointed the reference link to the new official site, top10.owasp.org.
+- Re-verified on 2026-09-25 that 2025 is still the current edition. Articles titled "OWASP Top 10 2026" either relabel the 2025 list or reprint the 2017 list.
+
 ## 1.0.1 — 2026-09-25
 
 - README: full usage guide (quick start, install options, how a run works, reading the report, next steps, update/uninstall, troubleshooting) in English and Thai.

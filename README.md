@@ -8,7 +8,7 @@ The result is a prioritized report with `file:line` evidence, OWASP/CWE mapping 
 
 ## What it does
 
-- **Maps findings to the current standards.** Top 10:2025 (final, Jan 2026), API Security Top 10:2023 and ASVS 5.0 references. SSRF is filed under A01:2025, and the new A03 (Software Supply Chain) and A10 (Exceptional Conditions) categories are covered.
+- **Maps findings to the current standards.** Top 10:2025 (final; the release-candidate label was removed on 2025-12-24), API Security Top 10:2023 and ASVS 5.0 references. SSRF is filed under A01:2025, and the new A03 (Software Supply Chain) and A10 (Exceptional Conditions) categories are covered.
 - **Reviews the whole app.** It builds an attack-surface map, then reviews each category across code, config, dependencies, Dockerfiles, CI and IaC. The heaviest focus is on what scanners miss: authorization (IDOR/BOLA, BFLA, mass assignment), business logic, fail-open error handling and logging.
 - **Runs your scanners if you have them.** Supported tools are Semgrep, gitleaks, osv-scanner, trivy, npm/pnpm/yarn audit, govulncheck, bandit, gosec, hadolint, zizmor and checkov. It never installs anything, and every scanner hit is verified against the code before it is reported.
 - **Reviews a diff before merge.** `diff main` limits the review to the changes, while still checking context in other files such as middleware order.

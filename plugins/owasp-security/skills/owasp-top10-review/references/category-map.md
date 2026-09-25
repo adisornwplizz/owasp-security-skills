@@ -1,6 +1,6 @@
 # Category map, filing rules and editions
 
-Verified 2026-09-25. Sources: owasp.org/Top10/2025 (final, released Jan 2026; source github.com/OWASP/Top10 `2025/docs/en`),
+Verified 2026-09-25. Sources: top10.owasp.org/2025 (formerly owasp.org/Top10/2025; final, with the release-candidate label removed on 2025-12-24, and only typo fixes since. Source: github.com/OWASP/Top10 `2025/docs/en`),
 owasp.org/API-Security 2023 (still the current API edition, with no newer edition or RC), ASVS 5.0.0 (2025-05-30, still latest).
 
 ## OWASP Top 10:2025 (web)
