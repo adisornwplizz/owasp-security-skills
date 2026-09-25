@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 — 2026-09-25
+
+- README: full usage guide (quick start, install options, how a run works, reading the report, next steps, update/uninstall, troubleshooting) in English and Thai.
+- Skill: a path argument (e.g. `src/api`) now explicitly scopes the review to that folder, as `argument-hint` already advertised.
+
 ## 1.0.0 — 2026-09-25
 
 First public release.

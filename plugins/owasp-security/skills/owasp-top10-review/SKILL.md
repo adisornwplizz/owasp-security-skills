@@ -46,7 +46,9 @@ Output folder: `<project>/.security-review/<YYYY-MM-DD>/` (call it `$OUT`). If `
 `.security-review/`, tell the user and suggest adding it. Don't edit `.gitignore` yourself.
 
 ### 1. Scope
-- **Mode.** Full repo is the default. `diff [base]` reviews the files changed vs `base` (default `main`/`master`):
+- **Mode.** Full repo is the default. A **path** argument (e.g. `src/api`) limits the review to that folder. Still
+  read the shared code it depends on, such as auth middleware, config and data access, and say in the report which
+  parts were out of scope. `diff [base]` reviews the files changed vs `base` (default `main`/`master`):
   `git diff --name-only <base>...HEAD` plus uncommitted changes. In diff mode, still check that new or changed routes
   pass through the auth and authorization middleware, and that changed queries and outbound calls are safe. Cross-file
   context is where diff reviews miss bugs.

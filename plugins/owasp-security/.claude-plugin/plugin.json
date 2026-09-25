@@ -1,6 +1,6 @@
 {
   "name": "owasp-security",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Security review of a web app or API you are building against OWASP Top 10:2025 and OWASP API Security Top 10:2023 (+ LLM Top 10 notes). Code, config, dependencies, CI/Docker, optional passive runtime checks; prioritized report with evidence and fixes.",
   "author": {
     "name": "adisornwplizz",
@@ -9,5 +9,13 @@
   "homepage": "https://github.com/adisornwplizz/owasp-security-skills",
   "repository": "https://github.com/adisornwplizz/owasp-security-skills",
   "license": "CC-BY-SA-4.0 AND MIT",
-  "keywords": ["security", "owasp", "owasp-top-10", "api-security", "appsec", "code-review", "sast"]
+  "keywords": [
+    "security",
+    "owasp",
+    "owasp-top-10",
+    "api-security",
+    "appsec",
+    "code-review",
+    "sast"
+  ]
 }
