@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Shop</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.21.0/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    const q = new URLSearchParams(location.search).get('q') || '';
+    document.getElementById('app').innerHTML = '<h1>Results for ' + q + '</h1>';
+  </script>
+</body>
+</html>

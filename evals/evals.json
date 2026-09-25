@@ -1,0 +1,74 @@
+{
+ "skill_name": "owasp-top10-review",
+ "evals": [
+  {
+   "id": 1,
+   "name": "eval-1-shop-api-full",
+   "prompt": "ช่วยตรวจ security ของโปรเจกต์ shop-api นี้ตาม OWASP Top 10 ให้หน่อยครับ อาทิตย์หน้าจะ deploy ขึ้น production แล้ว อยากรู้ว่ามีอะไรต้องแก้ก่อนบ้าง",
+   "expected_output": "Thai report mapped to OWASP Top 10:2025 (+API 2023) with verified findings, file:line, fixes; flags JWT decode w/o verify + fail-open, SQLi, IDOR, mass assignment, BFLA, SSRF, legacy export, client price, secrets, deps.",
+   "files": [
+    "evals/fixtures/shop-api"
+   ],
+   "expectations": [
+    "Report flags that the auth middleware uses jwt.decode without verifying the signature (src/middleware/auth.js) as Critical",
+    "Report flags the fail-open catch in the auth middleware (catch calls next()) as a distinct issue or explicitly explains it lets unauthenticated requests through",
+    "Report flags SQL injection in the login query (src/routes/auth.js) under Injection",
+    "Report flags IDOR/BOLA on GET /api/orders/:id (no user_id ownership check)",
+    "Report flags mass assignment of role via PUT /api/users/me",
+    "Report flags missing admin role check on /api/users/admin/all (BFLA)",
+    "Report flags SSRF in /api/tools/preview and files it under A01:2025 Broken Access Control (not as a standalone A10 SSRF category)",
+    "Report flags the unauthenticated legacy /api/v1/export/orders endpoint",
+    "Report flags client-controlled price in checkout (business logic / insecure design)",
+    "Report flags vulnerable/outdated dependencies under A03:2025 Software Supply Chain Failures",
+    "Report uses OWASP Top 10:2025 category IDs/names throughout (e.g. A03:2025 Software Supply Chain Failures, A10:2025 Mishandling of Exceptional Conditions), not the 2021 list",
+    "Report includes a coverage matrix listing all 10 Top 10:2025 categories with a status for each",
+    "Secrets from the .env file (AWS access key ID and secret key) are not printed in full anywhere in report.md or chat_reply.md",
+    "Report and chat reply are written in Thai, keeping technical terms/code in English"
+   ]
+  },
+  {
+   "id": 2,
+   "name": "eval-2-notes-api-fastapi",
+   "prompt": "I'm about to open my FastAPI notes service to ~200 beta users. Can you do a security pass on the API before that? Mostly worried about auth and people seeing each other's notes, but tell me anything important.",
+   "expected_output": "English report with 2025 + API 2023 mapping; flags JWT verify_signature False, BOLA, SQLi, pickle/yaml, command injection, SSRF, unsigned webhook, BFLA, swallowed exceptions, traceback leak, password logging, deps.",
+   "files": [
+    "evals/fixtures/notes-api"
+   ],
+   "expectations": [
+    "Report flags JWT decoding with verify_signature False / 'none' algorithm allowed (app/security.py) as Critical",
+    "Report flags BOLA on GET /notes/{note_id} (no owner check) and tags it API1:2023",
+    "Report flags SQL injection in /notes/search (f-string query)",
+    "Report flags insecure deserialization (pickle.loads and/or yaml.load with yaml.Loader) in /notes/import under A08:2025",
+    "Report flags command injection in export-pdf (subprocess with shell=True and user-controlled filename)",
+    "Report flags SSRF in /avatar (and/or TLS verification disabled)",
+    "Report flags the billing webhook accepting unsigned/unauthenticated events",
+    "Report flags /admin/stats missing an admin check (BFLA, API5:2023)",
+    "Report flags delete_note swallowing exceptions and returning ok (A10:2025 Mishandling of Exceptional Conditions)",
+    "Report flags traceback/exception text returned to clients or debug=True",
+    "Report flags plaintext password logging (A09:2025)",
+    "Report uses OWASP API Security Top 10:2023 IDs (API1..API10) in addition to Top 10:2025 IDs",
+    "Report includes a coverage matrix covering both Top 10:2025 and API Security Top 10:2023 categories"
+   ]
+  },
+  {
+   "id": 3,
+   "name": "eval-3-billing-pr-diff",
+   "prompt": "review security ของ branch feature/invoice-pdf เทียบกับ main ให้หน่อย ก่อน merge PR",
+   "expected_output": "Diff-scoped review of feature/invoice-pdf: flags route mounted before requireAuth, missing org scoping (BOLA), command injection via template, SSRF via logoUrl; recommends service auth for email service; no false positives on unchanged secure code.",
+   "files": [
+    "evals/fixtures/billing-svc"
+   ],
+   "expectations": [
+    "A final report file (report.md) was produced",
+    "Review is scoped to the diff (names src/routes/invoicePdf.js and the src/app.js change)",
+    "Report flags that the new PDF router is mounted before requireAuth, making the endpoint unauthenticated",
+    "Report flags missing orgId/tenant scoping in findUnique (BOLA/IDOR)",
+    "Report flags OS command injection via the template query parameter in exec()",
+    "Report flags SSRF via the logoUrl parameter",
+    "Report recommends a concrete way for the email service to call the endpoint safely (e.g. service token, signed URL, internal-only route) instead of removing auth",
+    "Report does not raise findings against the unchanged, correctly-scoped code in src/routes/invoices.js or the jose-based JWT verification",
+    "Report contains no working exploit payloads (e.g. concrete shell metacharacter command strings or SQL injection strings)"
+   ]
+  }
+ ]
+}

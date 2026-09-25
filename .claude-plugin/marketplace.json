@@ -1,0 +1,22 @@
+{
+  "name": "owasp-security-skills",
+  "description": "Security review skills for Claude Code based on OWASP Top 10:2025 and OWASP API Security Top 10:2023",
+  "owner": {
+    "name": "adisornwplizz",
+    "url": "https://github.com/adisornwplizz"
+  },
+  "plugins": [
+    {
+      "name": "owasp-security",
+      "source": "./plugins/owasp-security",
+      "description": "Review your own web app or API against OWASP Top 10:2025 + API Security Top 10:2023 and get a prioritized report with file:line evidence and fixes",
+      "category": "security",
+      "tags": [
+        "security",
+        "owasp",
+        "api",
+        "code-review"
+      ]
+    }
+  ]
+}
