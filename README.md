@@ -20,6 +20,12 @@ The result is a prioritized report with `file:line` evidence, OWASP/CWE mapping 
   - A coverage matrix shows the status of every category.
   - The report is written in the user's language.
 
+## Sample output
+
+These are real, unedited reports the skill produced on the bundled vulnerable fixtures:
+- [FastAPI notes API — English report](examples/report-fastapi-notes-api.en.md), with the [chat summary](examples/chat-reply-fastapi-notes-api.en.md)
+- [Express shop API — Thai report](examples/report-express-shop-api.th.md)
+
 ## Install
 
 **Plugin marketplace (recommended):**
@@ -102,6 +108,7 @@ plugins/owasp-security/
     scripts/                 detect_stack.sh, run_scanners.sh, summarize_findings.py, check_headers.sh
     assets/report-template.md
 evals/                       intentionally vulnerable fixtures + evals.json + setup script
+examples/                    sample reports produced by the skill
 ```
 
 ## License and credits
@@ -131,6 +138,8 @@ Plugin สำหรับ Claude Code ที่ตรวจ web app และ AP
 - พิมพ์บอกได้เลย เช่น "ตรวจ security ของโปรเจกต์นี้ตาม OWASP ก่อน deploy"
 - ตรวจเฉพาะ PR ด้วย `/owasp-security:owasp-top10-review diff main`
 - ตรวจแอปที่รันอยู่ในเครื่อง (passive เท่านั้น) ด้วย `--url http://localhost:3000`
+
+**ตัวอย่างผลลัพธ์:** [รายงานภาษาไทย](examples/report-express-shop-api.th.md) · [รายงานภาษาอังกฤษ](examples/report-fastapi-notes-api.en.md)
 
 **จุดเด่น**
 - ใช้ OWASP ฉบับล่าสุด (2025)

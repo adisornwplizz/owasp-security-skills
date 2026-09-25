@@ -25,3 +25,6 @@ First public release.
   - `summarize_findings.py`: converts SARIF/JSON results into 2025 categories.
   - `check_headers.sh`: passive checks, local hosts only by default.
 - Evals: three intentionally vulnerable fixtures (Express, FastAPI, PR diff). The skill passed 35/36 assertions; the baseline passed 24/36.
+
+### Docs
+- Sample reports in `examples/` (English FastAPI and Thai Express).
